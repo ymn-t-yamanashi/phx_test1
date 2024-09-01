@@ -1,4 +1,5 @@
 # Hoge
+Phoenix検証用
 
 To start your Phoenix server:
 
