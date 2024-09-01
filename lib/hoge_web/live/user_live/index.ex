@@ -6,7 +6,9 @@ defmodule HogeWeb.UserLive.Index do
 
   @impl true
   def mount(_params, _session, socket) do
-    {:ok, stream(socket, :users, Accounts.list_users())}
+    IO.inspect("--------------------mount-------------------------------")
+    users = if connected?(socket), do: Accounts.list_users(), else: []
+    {:ok, stream(socket, :users, users)}
   end
 
   @impl true
