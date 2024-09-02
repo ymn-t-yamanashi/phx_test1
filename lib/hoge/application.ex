@@ -11,8 +11,7 @@ defmodule Hoge.Application do
       HogeWeb.Telemetry,
       Hoge.Repo,
       {Ecto.Migrator,
-        repos: Application.fetch_env!(:hoge, :ecto_repos),
-        skip: skip_migrations?()},
+       repos: Application.fetch_env!(:hoge, :ecto_repos), skip: skip_migrations?()},
       {DNSCluster, query: Application.get_env(:hoge, :dns_cluster_query) || :ignore},
       {Phoenix.PubSub, name: Hoge.PubSub},
       # Start the Finch HTTP client for sending emails
