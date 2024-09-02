@@ -6,7 +6,7 @@ defmodule HogeWeb.UserLive.Index do
 
   @impl true
   def mount(_params, _session, socket) do
-    IO.inspect("--------------------mount-------------------------------")
+    Ymn.inspect("", "mount")
     users = if connected?(socket), do: Accounts.list_users(), else: []
     {:ok, stream(socket, :users, users)}
   end
@@ -35,6 +35,10 @@ defmodule HogeWeb.UserLive.Index do
   end
 
   @impl true
+  @spec handle_info(
+          {HogeWeb.UserLive.FormComponent, {:saved, any()}},
+          Phoenix.LiveView.Socket.t()
+        ) :: {:noreply, Phoenix.LiveView.Socket.t()}
   def handle_info({HogeWeb.UserLive.FormComponent, {:saved, user}}, socket) do
     {:noreply, stream_insert(socket, :users, user)}
   end

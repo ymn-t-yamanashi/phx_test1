@@ -18,7 +18,7 @@ defmodule Hoge.Accounts do
 
   """
   def list_users do
-    IO.inspect("-----------------list_users-------------------")
+    Ymn.inspect("list_users")
     Repo.all(User)
   end
 
